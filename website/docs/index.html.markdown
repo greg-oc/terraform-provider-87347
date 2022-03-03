@@ -15,7 +15,7 @@ Use the navigation to the left to read about the available resources.
 ## Example Usage
 
 ```hcl
-provider "kafka" {
+provider "kafkaAAATEST" {
   bootstrap_servers = ["localhost:9092"]
   ca_cert           = file("../secrets/ca.crt")
   client_cert       = file("../secrets/terraform-cert.pem")
