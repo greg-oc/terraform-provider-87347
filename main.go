@@ -1,12 +1,8 @@
 package main
 
 import (
-	"context"
 	"flag"
-	"log"
 
-	"github.com/Mongey/terraform-provider-kafka/kafka"
-	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -23,16 +19,4 @@ func main() {
 
 	flag.BoolVar(&debugMode, "debug", false, "set to true to run the provider with support for debuggers like delve")
 	flag.Parse()
-
-	opts := &plugin.ServeOpts{ProviderFunc: kafka.Provider}
-
-	if debugMode {
-		err := plugin.Debug(context.Background(), "registry.terraform.io/Mongey/kafka", opts)
-		if err != nil {
-			log.Println(err.Error())
-		}
-		return
-	}
-
-	plugin.Serve(opts)
 }
