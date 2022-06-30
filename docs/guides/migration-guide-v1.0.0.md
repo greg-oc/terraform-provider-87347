@@ -25,7 +25,7 @@ Those enhancements are described below:
   `database` block inside the subscription resource. A `TypeSet` was used by the `database` attribute where an index
   value of the block is calculated by the hash of the attributes. That means, if you change an attribute inside the
   block, then Terraform would produce the misleading plan telling you that the whole database is going to be recreated.
-  However, under the hood, the provider doesn't delete the database and just updates the attributes unless the `name`
+  However, under the hood, the provider doesn't delete the database and only updates its properties unless the `name`
   attribute was changed. In order to fix this, the database block has been moved to a separate resource.
 * **Separate database resource**: In order to fix the misleading plan, the database block has been moved to a separate
   resource. This allows the user to take greater control over the database resource. That is:
@@ -47,7 +47,7 @@ The `rediscloud_subscription` no longer supports the `database` block, and a new
 introduced. In this case, you only need to modify your existing `rediscloud_subscription` schema and create a new
 resource called `rediscloud_database` for each of your databases in the subscription.
 
-~> **Note**: If you want to create a new subscription, then the `creation_plan` block is required.
+~> **Note:** If you want to create a new subscription, then the `creation_plan` block is required.
 
 Here is an example of an old Terraform configuration:
 
@@ -183,7 +183,7 @@ resources for your databases. Like so:
     terraform state show rediscloud_subscription.example;
     terraform state show rediscloud_database.first_database;
     ```
-   ~>**OPTIONAL**: If you have other resources like `rediscloud_cloud_account` or `rediscloud_subscription_peering`, then
+   **OPTIONAL**: If you have other resources like `rediscloud_cloud_account` or `rediscloud_subscription_peering`, then
    you can check if they are valid:
      ```bash
      # Check if the cloud account resource is valid
