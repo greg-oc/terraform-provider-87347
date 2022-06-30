@@ -3,7 +3,7 @@ page_title: "Migrating to version v1.0.0"
 subcategory: "Guides"
 ---
 
-# Migrating to version v1.0.0 !@$@£$@
+# Migrating to version v1.0.0
 
 This guide is for the users who want to migrate their old Terraform configurations (`RedisLabs/rediscloud` `< v1.0.0`)
 to the latest version.
