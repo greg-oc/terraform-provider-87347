@@ -26,7 +26,7 @@ Those enhancements are described below:
   block, then Terraform would produce the misleading plan telling you that the whole database is going to be recreated.
   However, under the hood, the provider doesn't delete the database and only updates its properties unless the `name`
   attribute was changed. In order to fix this, the database block has been moved to a separate resource.
-* **Separate database resource**: In order to fix the misleading plan, the database block has been moved to a separate
+* **Separate database resource**: As mentioned, the database block has been moved to a separate
   resource. This allows the user to take greater control over the database resource. That is:
   * easier access to the attributes of the database,
   * importing specific databases in the state,
@@ -134,7 +134,7 @@ resources for your databases. Like so:
 
   // The database block has been moved to a separate resource - rediscloud_database.
   // The attributes of the database are the same as the ones in the database block in the old subscription resource schema. 
-  // With the exception of the `subscription_id` attribute.
+  // With the exception of the new `subscription_id` attribute.
   resource "rediscloud_database" "first_database" {
       // Attach the database to the subscription.
       subscription_id = rediscloud_subscription.example.id
